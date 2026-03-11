@@ -1,14 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "Billy Blocksi Enterprise",
-  "version": "1.0.0",
-  "description": "Next-gen AI content filter for modern classrooms.",
+  "name": "Billy Blocksi Local",
+  "version": "1.0",
   "permissions": [
     "declarativeNetRequest",
-    "declarativeNetRequestFeedback",
     "storage",
-    "tabs",
-    "scripting"
+    "unlimitedStorage",
+    "alarms",
+    "tabs"
   ],
   "host_permissions": ["<all_urls>"],
   "background": {
