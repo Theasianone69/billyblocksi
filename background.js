@@ -64,3 +64,27 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     console.log("Billy checking active tab:", tab.url);
   }
 });
+// 1. Local Database of Blocked Words/Sites
+const DEFAULT_BLACKLIST = ["game", "proxy", "bloxd.io", "unblocked"];
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.local.get(["userBlacklist"], (res) => {
+    if (!res.userBlacklist) {
+      chrome.storage.local.set({ userBlacklist: DEFAULT_BLACKLIST });
+    }
+  });
+  console.log("Billy Blocksi: Local Mode Active.");
+});
+
+// 2. Real-time URL Monitoring (Backup for DNR)
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === 'complete' && tab.url) {
+    chrome.storage.local.get(["userBlacklist"], (res) => {
+      const list = res.userBlacklist || [];
+      if (list.some(word => tab.url.toLowerCase().includes(word))) {
+        // Force the tab to a local block page
+        chrome.tabs.update(tabId, { url: chrome.runtime.getURL("blocked.html") });
+      }
+    });
+  }
+});
