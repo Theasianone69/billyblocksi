@@ -22,3 +22,6 @@
     }]
   }
 }
+"externally_connectable": {
+  "ids": ["YOUR_TEACHER_EXTENSION_ID_HERE"]
+}
