@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #1a1a1a; color: white; font-family: sans-serif; text-align: center; padding-top: 100px; }
+        .logo { font-size: 48px; font-weight: bold; color: #ff4444; }
+        .message { margin-top: 20px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <div class="logo">BILLY BLOCKSI</div>
+    <div class="message">This site has been restricted by your school administrator.</div>
+    <p id="url-display"></p>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById('url-display').innerText = "Target: " + params.get("url");
+    </script>
+</body>
+</html>
