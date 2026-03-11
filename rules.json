@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*game*",
+      "resourceTypes": ["main_frame", "sub_frame", "script"]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 2,
+    "action": { 
+      "type": "redirect", 
+      "redirect": { "url": "https://classroom.google.com" } 
+    },
+    "condition": {
+      "urlFilter": "||bloxd.io^",
+      "resourceTypes": ["main_frame"]
+    }
+  }
+]
